@@ -41,6 +41,17 @@ final class WooCommerce_18_Tags_Public extends WooCommerce_18_Tags_Abstract {
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 		//Products per page
 		add_filter( 'eighteen_tags_products_per_page', array( $this, 'products_per_page' ), 999 );
+
+		add_filter( 'eighteen-tags-wc-prod-share-icons', array( $this, 'product_sharing' ) );
+		add_filter( 'eighteen-tags-wc-flip-prod-img', array( $this, 'product_img_flip' ) );
+	}
+
+	public function product_sharing() {
+		return $this->get( 'wc-prod-share-icons' );
+	}
+
+	public function product_img_flip() {
+		return $this->get( 'wc-prod-flip-img' );
 	}
 
 	/**

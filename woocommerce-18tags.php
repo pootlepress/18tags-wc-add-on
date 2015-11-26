@@ -116,7 +116,7 @@ final class WooCommerce_18T {
 		$this->version		= WC18T_VERSION;
 		self::$url			= $this->plugin_url;
 
-		add_action( 'init', array( $this, 'setup' ) );
+		add_action( 'plugins_loaded', array( $this, 'setup' ) );
 	}
 
 	/**
@@ -132,6 +132,7 @@ final class WooCommerce_18T {
 
 			//Setting public object
 			$this->public = new WooCommerce_18_Tags_Public( $this->token, $this->plugin_path, $this->plugin_url );
+			$this->ext_plugins();
 		}
 	}
 
@@ -150,6 +151,15 @@ final class WooCommerce_18T {
 			self::$_instance = new self();
 		return self::$_instance;
 	} // End instance()
+
+	public function ext_plugins() {
+		if ( ! class_exists( 'Eighteen_Tags_Product_Sharing' ) ) {
+			require 'includes/product-sharing/product-sharing.php';
+		}
+		if ( ! class_exists( 'WC_pif' ) ) {
+			require 'includes/woocommerce-product-image-flipper/image-flipper.php';
+		}
+	}
 
 	/**
 	 * Cloning is forbidden.

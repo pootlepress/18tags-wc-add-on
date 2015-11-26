@@ -68,7 +68,7 @@ $wc_18_tags_customizer_fields = array(
 		),
 	),
 	array(
-		'id'        => 'wc-flip-prod-img',
+		'id'        => 'wc-prod-flip-img',
 		'label'     => 'Flip product images',
 		'section'   => 'Shop',
 		'type'    => 'checkbox',
